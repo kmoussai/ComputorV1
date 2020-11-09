@@ -40,7 +40,8 @@ class Polynom:
             else:
                 ans += (("+ " if coeff > 0 else "- " )+ str(abs(coeff)) + " * X^" + str(expo) + " ")
                 # print("+" if coeff > 0 else "-", abs(coeff), "* X^" + str(expo),end=" ")
-        ans += "= 0"
+        ans += "= 0\n"
+        ans += "Polynomial degree: " + str(self.degree)
         return "Reduced form: " + ans
 
 
