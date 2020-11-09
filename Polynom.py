@@ -15,31 +15,26 @@ class Polynom:
             self.expression[exponent] += coeff
         except:
             self.expression[exponent] = coeff
-        
+    
 
-    def printPoly(self):
-        print(self.expression)
-    def reducedForm(self):
-        items = sorted(self.expression.items())
-        ans = ""
-        for expo, coeff in items:
-            if expo == 0:
-                ans += str(coeff) + " * X^0 "
-                # print(coeff, "* X^0", end=" ")
-            else:
-                ans += (("+ " if coeff > 0 else "- " )+ str(abs(coeff)) + " * X^" + str(expo) + " ")
-                # print("+" if coeff > 0 else "-", abs(coeff), "* X^" + str(expo),end=" ")
-        return ans + "= 0"
+    def solve(self):
+        if self.degree > 2:
+            print("The polynomial degree is stricly greater than 2, I can't solve.")
+        else:
+            pass
+
+
+
     def __str__(self):
         items = sorted(self.expression.items())
         ans = ""
         for expo, coeff in items:
             if expo == 0:
-                ans += str(coeff) + " * X^0 "
-                # print(coeff, "* X^0", end=" ")
+                ans += str(int(coeff) if coeff.is_integer() else coeff) + " * X^0 "
             else:
-                ans += (("+ " if coeff > 0 else "- " )+ str(abs(coeff)) + " * X^" + str(expo) + " ")
-                # print("+" if coeff > 0 else "-", abs(coeff), "* X^" + str(expo),end=" ")
+                ans += (("+ " if coeff > 0 else "- " )
+                    + str(abs(int(coeff) if coeff.is_integer() else coeff)) + " * X^"
+                    + str(expo) + " ")
         ans += "= 0\n"
         ans += "Polynomial degree: " + str(self.degree)
         return "Reduced form: " + ans
